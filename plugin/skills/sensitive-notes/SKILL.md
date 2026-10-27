@@ -1,11 +1,11 @@
 ---
 name: sensitive-notes
-description: Step 4 and step 9 of Escape from Evernote. Finds notes with passwords, logins, account or card numbers, ID numbers, and private legal, medical, or family matters; asks the user what to do with each one; keeps them in a locked spot; and, once the user has moved them somewhere safe, offers to delete those temporary copies for good. Use when the escape reaches sensitive notes or cleanup, or when the user says "what did you find that's private", "show my sensitive notes", "I've moved my passwords", "print my sensitive notes", or "delete the sensitive files".
+description: Step 4 and step 9 of Free My Notes. Finds notes with passwords, logins, account or card numbers, ID numbers, and private legal, medical, or family matters; asks the user what to do with each one; keeps them in a locked spot; and, once the user has moved them somewhere safe, offers to delete those temporary copies for good. Use when the escape reaches sensitive notes or cleanup, or when the user says "what did you find that's private", "show my sensitive notes", "I've moved my passwords", "print my sensitive notes", or "delete the sensitive files".
 ---
 
 # Sensitive notes
 
-Evernote often ends up holding the keys to someone's life: Wi-Fi passwords, bank logins, safe codes, a scan of a driver's license. These need different handling from everything else. This skill is in every tier. Safety is never paywalled.
+Notes apps often end up holding the keys to someone's life: Wi-Fi passwords, bank logins, safe codes, a scan of a driver's license. These need different handling from everything else. This skill is in every tier. Safety is never paywalled.
 
 ## What counts as sensitive
 
@@ -19,7 +19,7 @@ Flag a note as sensitive if it contains any of these (or the user says so):
 
 When in doubt, flag it and let the user decide.
 
-**Never quote sensitive content back in chat.** Refer to notes by title and what kind of thing they hold ("Bank info - SWF: account numbers and a login"). Never put sensitive content into Claude's memory, the escape log, a Claude Project, or a shared folder.
+**Never quote sensitive content back in chat.** Refer to notes by title and what kind of thing they hold ("Bank info - SWF: account numbers and a login"). Never put sensitive content into Claude's memory, the progress log, a Claude Project, or a shared folder.
 
 ## Ask the user (step 4)
 
@@ -30,7 +30,7 @@ When in doubt, flag it and let the user decide.
 | Choice | What happens |
 |---|---|
 | **Locked copy** (suggested) | Copy it into a separate locked spot, never into the main destination. You move it to a password manager (or print it), then it gets deleted. |
-| **Skip** | Don't copy it at all. It stays in Evernote and in your .enex backup. Good for things you've already saved elsewhere. |
+| **Skip** | Don't copy it at all. It stays in the notes app and in your backup. Good for things you've already saved elsewhere. |
 | **Copy normally** | Treat it like any other note. Only for things that aren't actually private (a public Wi-Fi password, an old expired code). |
 
 3. Record each decision in the tracker (title and choice only).
@@ -56,10 +56,10 @@ When the user says they've moved everything (to a password manager, printed it, 
 1. Confirm in plain words: "You've moved your sensitive notes somewhere safe and want me to delete the temporary copies I made. This can't be undone. Delete them?"
 2. Only on a clear yes, delete **only the files and folders this plugin created for sensitive notes**, and list exactly what was deleted.
 3. If the destination has a trash (Google Drive, a computer), remind them to empty it, or offer to, since deleted files stay in trash for a while.
-4. Remind them the originals are still in Evernote and in the .enex backup. Those are theirs to keep or delete. The plugin never deletes from Evernote.
-5. Mark cleanup done in the escape log.
+4. Remind them the originals are still in their notes app and in the backup. Those are theirs to keep or delete. The plugin never deletes anything from the notes app.
+5. Mark cleanup done in the progress log.
 
-If the user wants the sensitive copies deleted right away, before moving them anywhere, warn once that it'll be their only easy-to-read copy outside Evernote and the backup, then do it if they confirm.
+If the user wants the sensitive copies deleted right away, before moving them anywhere, warn once that it'll be their only easy-to-read copy outside the notes app and the backup, then do it if they confirm.
 
 ## Password managers (if asked)
 

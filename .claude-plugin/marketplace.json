@@ -1,14 +1,14 @@
 {
-  "name": "mindful-tech-escape-from-evernote",
-  "description": "Escape from Evernote, a Claude plugin by Mindful Tech Projects",
+  "name": "mindful-tech-free-my-notes",
+  "description": "Free My Notes, a Claude plugin by Mindful Tech Projects",
   "owner": {
     "name": "Mindful Tech Projects"
   },
   "plugins": [
     {
-      "name": "escape-from-evernote",
+      "name": "free-my-notes",
       "source": "./plugin",
-      "description": "Get every note out of Evernote, safely, so you can stop paying for it. Free tier: Escape Hatch."
+      "description": "Get every note out of your notes app, safely, or keep a backup you control. Free tier: Escape Hatch."
     }
   ]
 }

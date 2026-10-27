@@ -1,6 +1,16 @@
 # Lessons learned from real escapes
 
-These came from the first full escape (476 notes, 32 notebooks, October 2026). Check here before improvising.
+Most of these came from the first full escape (476 notes, 32 notebooks, October 2026). Check here, and the app's guide in `../../notes-apps/references/`, before improvising.
+
+## Any notes app
+
+- **Exports are the backup.** Keep the file exactly as downloaded, plus a second copy, before anything is canceled or deleted.
+- **Pick the most complete format.** Joplin's JEX keeps tags and dates that its Markdown export drops; Standard Notes must be a decrypted backup; Zoho Notebook's HTML is readable where its ZNote format isn't.
+- **Some exports arrive by email** (Google Takeout, Zoho Notebook, big Notion workspaces). Record "waiting for export email" in the progress log and pick up when it arrives.
+- **"Notebooks" differ by app.** Keep has labels, Simplenote and Bear have tags, OneNote has sections, Obsidian and Apple Notes have folders. A note with several labels or tags goes under the first one and keeps the rest as tags.
+- **Notion file names end in a long code** (`Recipes 1a2b3c…`). It isn't part of the title.
+- **Handwriting comes out as pictures** (MyScript notebooks, OneNote drawings). Copy them as pages and say so.
+- **Count from the export, not from memory.** One .json per Keep note, one entry per Simplenote note in notes.json, one file per note in folder exports.
 
 ## Reading Evernote through the connector
 
@@ -21,7 +31,7 @@ These came from the first full escape (476 notes, 32 notebooks, October 2026). C
 - **Match by size when you can.** A file whose size matches the original exactly arrived completely.
 - **Count notes, not just files.** Add up the note counts per notebook and compare with the survey total.
 
-## The .enex backup (Evernote desktop app)
+## Evernote's .enex backup (desktop app)
 
 - Export is only in the **desktop app** (Mac or Windows), not the website. Free Evernote accounts can still export, so canceling the subscription doesn't block the backup, but do it first anyway.
 - Export one notebook at a time: right-click (or ⋯) a notebook → **Export notebook…** → **ENEX** → keep the attributes checked (title, dates, tags, author, source URL) → **Export** → choose where to save.

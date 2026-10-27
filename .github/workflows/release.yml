@@ -2,9 +2,9 @@
 #
 # How to release a new version (for example 1.1.0):
 #   1. Update plugin/ and set "version": "1.1.0" in plugin/.claude-plugin/plugin.json
-#      and the Version line in plugin/skills/escape-plan/references/tier.md
+#      and the Version line in plugin/skills/free-my-notes/references/tier.md
 #   2. Add a "## 1.1.0 — YYYY-MM-DD" section to the top of CHANGELOG.md
-#   3. Add releases/v1.1.0/ with escape-from-evernote-free-v1.1.0.plugin
+#   3. Add releases/v1.1.0/ with free-my-notes-free-v1.1.0.plugin
 #      (plus README-v1.1.0.md and any other versioned snapshots).
 #      Paid .plugin files are never put in this public repository.
 #   4. Open a pull request from a release/vX.Y.Z branch. Merge it to main
@@ -98,10 +98,10 @@ jobs:
               echo "**On a computer** (the Claude phone app can't install plugins from a file):"
               echo "1. Download \`$(basename "$plugin")\` below."
               echo "2. Open the Claude desktop app or claude.ai, then **Customize → Plugins**."
-              echo "3. Remove an older Escape from Evernote if it's listed, then upload the new file."
-              echo "4. Connect the Evernote connector (Settings → Connectors), start a new chat, and say **\"escape Evernote.\"**"
+              echo "3. Remove an older Free My Notes if it's listed, then upload the new file."
+              echo "4. Start a new chat and say **\"free my notes.\"**"
               echo
-              echo "Paid versions (Side Door, Getaway Car, The Great Escape): https://mindfultechsupport.github.io/Escape-from-Evernote/#pricing"
+              echo "Paid versions (Side Door, Getaway Car, The Great Escape): https://freemynotes.com/#pricing"
             } >> notes.md
 
             latest_flag="--latest=false"
@@ -110,7 +110,7 @@ jobs:
             echo "Publishing $tag at ${target:0:7}"
             gh release create "$tag" "$dir"/* \
               --target "$target" \
-              --title "Escape from Evernote $tag" \
+              --title "Free My Notes $tag" \
               --notes-file notes.md \
               "$latest_flag"
           done

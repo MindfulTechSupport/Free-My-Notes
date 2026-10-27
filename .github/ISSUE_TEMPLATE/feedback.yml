@@ -1,12 +1,12 @@
 name: Feedback
-description: Ideas, things that felt off, or what you love about Escape from Evernote
+description: Ideas, things that felt off, or what you love about Free My Notes
 title: "[Feedback] "
 labels: ["feedback"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for helping make Escape from Evernote better. Posts here are public, so please don't include anything private: no note contents, passwords, account numbers, email addresses, or wallet details.
+        Thanks for helping make Free My Notes better. Posts here are public, so please don't include anything private: no note contents, passwords, account numbers, email addresses, or wallet details.
   - type: dropdown
     id: kind
     attributes:
@@ -28,7 +28,28 @@ body:
         - Side Door
         - Getaway Car
         - The Great Escape
+        - Backup service
         - Not sure
+  - type: dropdown
+    id: app
+    attributes:
+      label: Which notes app were your notes in?
+      options:
+        - Evernote
+        - Google Keep
+        - OneNote
+        - Apple Notes
+        - Notion
+        - Zoho Notebook
+        - Joplin
+        - Simplenote
+        - Bear
+        - Standard Notes
+        - Obsidian
+        - UpNote
+        - MyScript Notes
+        - Zoom notes
+        - Another app (tell us which below)
   - type: dropdown
     id: destination
     attributes:
@@ -42,6 +63,7 @@ body:
         - Apple Notes
         - Google Keep
         - Not there yet
+        - Just a backup
   - type: textarea
     id: details
     attributes:

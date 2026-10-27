@@ -1,19 +1,20 @@
 {
-  "name": "escape-from-evernote",
+  "name": "free-my-notes",
   "version": "1.0.0",
-  "description": "Get every note out of Evernote, safely, so you can stop paying for it. Surveys your notebooks, sorts work from personal, protects passwords and private notes, turns your notes into Claude-ready files, checks your backup, and walks you through canceling. Nothing is deleted unless you ask. Free tier (Escape Hatch).",
+  "description": "Get every note out of your notes app, safely: Evernote, Google Keep, Notion, OneNote, Apple Notes, Joplin, Simplenote, Bear, and more. Move them somewhere new or just keep a backup you control. Sorts work from personal, protects passwords and private notes, turns your notes into Claude-ready files, checks your backup, and walks you through canceling. Nothing is deleted unless you ask. Free tier (Escape Hatch).",
   "author": {
     "name": "Mindful Tech Projects"
   },
   "keywords": [
-    "evernote",
-    "migration",
-    "export",
     "notes",
     "backup",
-    "privacy",
-    "organization"
+    "export",
+    "migration",
+    "evernote",
+    "google keep",
+    "onenote",
+    "privacy"
   ],
-  "homepage": "https://mindfultechsupport.github.io/Escape-from-Evernote/",
-  "repository": "https://github.com/MindfulTechSupport/Escape-from-Evernote"
+  "homepage": "https://freemynotes.com",
+  "repository": "https://github.com/MindfulTechSupport/Free-My-Notes"
 }
