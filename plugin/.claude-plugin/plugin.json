@@ -1,0 +1,19 @@
+{
+  "name": "escape-from-evernote",
+  "version": "1.0.0",
+  "description": "Get every note out of Evernote, safely, so you can stop paying for it. Surveys your notebooks, sorts work from personal, protects passwords and private notes, turns your notes into Claude-ready files, checks your backup, and walks you through canceling. Nothing is deleted unless you ask. Free tier (Escape Hatch).",
+  "author": {
+    "name": "Mindful Tech Projects"
+  },
+  "keywords": [
+    "evernote",
+    "migration",
+    "export",
+    "notes",
+    "backup",
+    "privacy",
+    "organization"
+  ],
+  "homepage": "https://mindfultechsupport.github.io/Escape-from-Evernote/",
+  "repository": "https://github.com/MindfulTechSupport/Escape-from-Evernote"
+}

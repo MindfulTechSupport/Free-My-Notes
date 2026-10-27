@@ -1,0 +1,56 @@
+name: Feedback
+description: Ideas, things that felt off, or what you love about Escape from Evernote
+title: "[Feedback] "
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping make Escape from Evernote better. Posts here are public, so please don't include anything private: no note contents, passwords, account numbers, email addresses, or wallet details.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of feedback is this?
+      options:
+        - Idea or feature request
+        - Something confusing or not working
+        - A note or notebook didn't come over right
+        - Something I love
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Which version are you using?
+      options:
+        - Escape Hatch (free)
+        - Side Door
+        - Getaway Car
+        - The Great Escape
+        - Not sure
+  - type: dropdown
+    id: destination
+    attributes:
+      label: Where were your notes going?
+      options:
+        - Claude-ready files
+        - Google Drive
+        - Notion
+        - Word / OneDrive
+        - Markdown / Obsidian
+        - Apple Notes
+        - Google Keep
+        - Not there yet
+  - type: textarea
+    id: details
+    attributes:
+      label: Your feedback
+      description: What happened or what you'd like, and why it matters to you.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Plugin version (if you know it)
+      placeholder: "1.0.0"
