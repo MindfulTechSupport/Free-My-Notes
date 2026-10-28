@@ -1,0 +1,116 @@
+# Publishes a GitHub Release for every version in releases/ that doesn't have one yet.
+#
+# How to release a new version (for example 1.1.0):
+#   1. Update plugin/ and set "version": "1.1.0" in plugin/.claude-plugin/plugin.json
+#      and the Version line in plugin/skills/free-my-notes/references/tier.md
+#   2. Add a "## 1.1.0 — YYYY-MM-DD" section to the top of CHANGELOG.md
+#   3. Add releases/v1.1.0/ with free-my-notes-free-v1.1.0.plugin
+#      (plus README-v1.1.0.md and any other versioned snapshots).
+#      Paid .plugin files are never put in this public repository.
+#   4. Open a pull request from a release/vX.Y.Z branch. Merge it to main
+#      only after the owner approves. Merging triggers this workflow, which creates tag v1.1.0 and its Release page,
+#      with notes from CHANGELOG.md and every file in releases/v1.1.0/ attached.
+#
+# It can also be run by hand from the Actions tab ("Run workflow").
+
+name: Publish releases
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "releases/**"
+      - "plugin/**"
+      - "CHANGELOG.md"
+      - ".github/workflows/release.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-releases
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check that the plugin version has a release folder
+        run: |
+          v=$(jq -r .version plugin/.claude-plugin/plugin.json)
+          echo "Plugin source version: $v"
+          if [ ! -d "releases/v$v" ]; then
+            echo "::warning::plugin/ is at version $v, but releases/v$v/ doesn't exist yet. Version $v won't be released until that folder is added."
+          fi
+
+      - name: Make sure no paid plugin files are in this public repo
+        run: |
+          if ls releases/v*/*.plugin 2>/dev/null | grep -v -- '-free-v' ; then
+            echo "::error::Only free .plugin files belong in this public repository."
+            exit 1
+          fi
+
+      - name: Publish every version that has no Release yet
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          versions=$(ls -d releases/v*/ | sed -E 's#releases/v([^/]+)/#\1#' | sort -V)
+          latest=$(echo "$versions" | tail -1)
+
+          for v in $versions; do
+            tag="v$v"
+            dir="releases/$tag"
+
+            if gh release view "$tag" >/dev/null 2>&1; then
+              echo "$tag is already released. Skipping."
+              continue
+            fi
+
+            plugin=$(ls "$dir"/*.plugin 2>/dev/null | head -1 || true)
+            if [ -z "$plugin" ]; then
+              echo "::warning::$dir has no .plugin file, so $tag was skipped."
+              continue
+            fi
+
+            # Tag the commit where this version's plugin file first appeared (follows renames).
+            target=$(git log --follow --diff-filter=A --format=%H -- "$plugin" | tail -1)
+            if [ -z "$target" ]; then target=$(git rev-parse HEAD); fi
+
+            # Release notes: this version's section of CHANGELOG.md.
+            awk -v v="$v" '
+              index($0, "## " v " ") == 1 || $0 == "## " v { on = 1; next }
+              on && /^## / { exit }
+              on && $0 != "---" { print }
+            ' CHANGELOG.md > notes.md
+            if [ ! -s notes.md ]; then
+              echo "See CHANGELOG.md for details." > notes.md
+            fi
+            {
+              echo
+              echo "### Install the free version (Escape Hatch)"
+              echo "**On a computer** (the Claude phone app can't install plugins from a file):"
+              echo "1. Download \`$(basename "$plugin")\` below."
+              echo "2. Open the Claude desktop app or claude.ai, then **Customize → Plugins**."
+              echo "3. Remove an older Free My Notes if it's listed, then upload the new file."
+              echo "4. Start a new chat and say **\"free my notes.\"**"
+              echo
+              echo "Paid versions (Side Door, Getaway Car, The Great Escape): https://freemynotes.com/#pricing"
+            } >> notes.md
+
+            latest_flag="--latest=false"
+            if [ "$v" = "$latest" ]; then latest_flag="--latest"; fi
+
+            echo "Publishing $tag at ${target:0:7}"
+            gh release create "$tag" "$dir"/* \
+              --target "$target" \
+              --title "Free My Notes $tag" \
+              --notes-file notes.md \
+              "$latest_flag"
+          done
