@@ -1,0 +1,14 @@
+{
+  "name": "mindful-tech-free-my-notes",
+  "description": "Free My Notes, a Claude plugin by Mindful Tech Projects",
+  "owner": {
+    "name": "Mindful Tech Projects"
+  },
+  "plugins": [
+    {
+      "name": "free-my-notes",
+      "source": "./plugin",
+      "description": "Get every note out of your notes app, safely, or keep a backup you control. Free tier: Escape Hatch."
+    }
+  ]
+}
